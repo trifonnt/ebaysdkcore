@@ -1,5 +1,9 @@
-= Steps when new version of eBay SDK is released
+= Info
+ - https://github.com/linus87/ebaysdk
+   - https://mvnrepository.com/artifact/io.github.linus87/ebaysdk/1065
 
+
+= Steps when new version of eBay SDK is released
 +01) Get last version
 $ cd ebay-origin
 $ wget https://developer.ebay.com/devzone/codebase/javasdk-jaxb/ebaysdkjava1113.zip
@@ -29,9 +33,13 @@ $ cp ./source/wsdl/ebaySvc.wsdl ../src/main/resources/com/ebay/sdk/
 $ set MAVEN_OPTS=-Xmx512m
 
 
--04) Execute Maven command
++04) Execute Maven command
 $ ./mvnw -e clean package
 If the build is successful, the jar file will be built to 'target' folder.
+
+
+-05) Release to Central Maven Repository
+???
 
 
 Notes:
