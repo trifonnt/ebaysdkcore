@@ -1,6 +1,14 @@
 = Info
+   - https://mvnrepository.com/artifact/com.ebay/ebaysdkcore/939
+
+ - https://github.com/tonicsoft/ebaysdkcore
+   - https://mvnrepository.com/artifact/org.tonicsoft.ebay/ebaysdkcore/981.0.0
+
  - https://github.com/linus87/ebaysdk
    - https://mvnrepository.com/artifact/io.github.linus87/ebaysdk/1065
+
+ - https://github.com/lespaul361/eBaySDK939
+ - https://github.com/lespaul361/eBaySDK1027
 
 
 = Steps when new version of eBay SDK is released
@@ -49,3 +57,32 @@ for details, please refer to pom.xml file.
 - Java 1.8.0_171
 - Maven 3.6.0
 - Linux (Ubuntu)
+
+
+### Publish new version to JitPack
+
+ - Create new Release in GitHub
+
+ - Open below URL in order to start JitPack build process
+
+```shell
+https://jitpack.io/com/github/trifonnt/ebaysdkcore/1113.0.0
+```
+
+### Get this project into your Maven build(pom.xml)
+```xml
+...
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+ ...
+ ...
+ 	<dependency>
+	    <groupId>com.github.trifonnt</groupId>
+	    <artifactId>ebaysdkcore</artifactId>
+	    <version>1113.0.0</version>
+	</dependency>
+...
