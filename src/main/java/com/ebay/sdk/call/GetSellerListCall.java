@@ -4,7 +4,7 @@ This program is licensed under the terms of the eBay Common Development and
 Distribution License (CDDL) Version 1.0 (the "License") and any subsequent  version 
 thereof released by eBay.  The then-current version of the License can be found 
 at http://www.opensource.org/licenses/cddl1.php and in the eBaySDKLicense file that 
-is under the root directory at /LICENSE.txt.
+is under the eBay SDK ../docs directory.
 */
 
 package com.ebay.sdk.call;
@@ -24,26 +24,20 @@ import com.ebay.soap.eBLBaseComponents.*;
  * <p>Description: Contains wrapper classes for eBay SOAP APIs.</p>
  * <p>Copyright: Copyright (c) 2009</p>
  * <p>Company: eBay Inc.</p>
- * <br> <B>Input property:</B> <code>UserID</code> - Specifies the seller whose items will be returned. <b>UserID</b> is an optional
- * input. If not specified, retrieves listings for the user identified by the
- * authentication token passed in the request. Note that since user
- * information is anonymous to everyone except the bidder and the seller
- * (during an active auction), only sellers looking for information about
- * their own listings and bidders who know the user IDs of their sellers will
- * be able to make this API call successfully.
+ * <br> <B>Input property:</B> <code>UserID</code> - <br/><br/>
+ * <span class="tablenote"><strong>Note:</strong>
+ * This field should no longer be used, and will be ignored if it is included in a <b>GetSellerList</b> request. There are plans to remove this field from the public WSDL. The only eBay user ID that can be used is the one associated with the authentication token.
+ * </span>
  * <br> <B>Input property:</B> <code>MotorsDealerUsers</code> - Specifies the list of Motors Dealer sellers for which a special set of
  * metrics can be requested. Applies to eBay Motors Pro applications only.
  * <br> <B>Input property:</B> <code>EndTimeFilter</code> - Helper wrapper to set GetSellerListRequestType EndTimeFrom, EndTimeTo:
  * TimeFrom sets GetSellerListRequestType.EndTimeFrom: 
  * Specifies the earliest (oldest) date to use in a date range filter based on
- * item end time. 
- * <br/><br/>								
- * Specify either an end-time range or a start-time range
+ * item end time. Specify either an end-time range or a start-time range
  * filter in every call request. Each of the time ranges must be a value less than
  * 120 days.
  * TimeTo sets GetSellerListRequestType.EndTimeTo: 
- * Specifies the latest (most recent) date to use in a date range filter based
- * on item end time. Must be specified if <b>EndTimeFrom</b> is specified.
+ * Specifies the latest (most recent) date to use in a date range filter based on item end time. Must be specified if <b>EndTimeFrom</b> is specified.
  * <br> <B>Input property:</B> <code>Sort</code> - Specifies the order in which returned items are sorted (based on the end
  * dates of the item listings). Valid values:
  * <br>
@@ -58,72 +52,37 @@ import com.ebay.soap.eBLBaseComponents.*;
  * (i.e., you must specify either the end time range or start time range
  * in every request).
  * TimeTo sets GetSellerListRequestType.StartTimeTo: 
- * Specifies the latest (most recent) date to use in a date range filter based
- * on item start time. Must be specified if <b>StartTimeFrom</b> is specified.
- * <br> <B>Input property:</B> <code>Pagination</code> - Contains the data controlling the pagination of the returned values.
- * If you set a <b>DetailLevel</b> in this call, you must set pagination values.
- * The <b>Pagination</b> field contains
- * the number of items to be returned per page of data (per call),
- * and the page number to return with the current call.
- * <br> <B>Input property:</B> <code>GranularityLevel</code> - Specifies the subset of item and user fields to return. See <b>GetSellerList</b> 
- * for a list of the fields that are returned
- * for each granularity level. For <b>GetSellerLis</b>t, use <b>DetailLevel</b> or
- * <b>GranularityLevel</b> in a request, but not both. For <b>GetSellerList</b>, if
- * <b>GranularityLevel</b> is specified, <b>DetailLevel</b> is ignored.
+ * Specifies the latest (most recent) date to use in a date range filter based on item start time. Must be specified if <b>StartTimeFrom</b> is specified.
+ * <br> <B>Input property:</B> <code>Pagination</code> - Contains the data controlling the pagination of the returned values. If you set a <b>DetailLevel</b> in this call, you must set pagination values. The <b>Pagination</b> field contains the number of items to be returned per page of data (per call), and the page number to return with the current call.
+ * <br> <B>Input property:</B> <code>GranularityLevel</code> - Specifies the subset of item and user fields to return. See <b>GetSellerList</b> for a list of the fields that are returned for each granularity level. For <b>GetSellerLis</b>t, use <b>DetailLevel</b> or <b>GranularityLevel</b> in a request, but not both. For <b>GetSellerList</b>, if <b>GranularityLevel</b> is specified, <b>DetailLevel</b> is ignored.
  * <br> <B>Input property:</B> <code>SKUArray</code> - Container for a set of SKUs.
  * Filters (reduces) the response to only include active listings
  * that the seller listed with any of the specified SKUs.
  * If multiple listings include the same SKU, they are
  * all returned (assuming they also match the other criteria
- * in the <b>GetSellerList</b> request).<br>
+ * in the GetSellerList request).<br>
  * <br>
- * <b>SKUArray</b> can be used to retrieve items listed by the user
- * identified in <b>AuthToken</b> or in <b>UserID</b>.<br>
+ * SKUArray can be used to retrieve items listed by the user
+ * identified in AuthToken or in UserID.<br>
  * <br>
  * <span class="tablenote"><b>Note:</b>
  * Listings with matching SKUs are returned regardless of their
- * <b>Item.InventoryTrackingMethod</b> settings.
+ * Item.InventoryTrackingMethod settings.
  * </span>
- * <br> <B>Input property:</B> <code>IncludeWatchCount</code> - Specifies whether to include <b>WatchCount</b> in Item nodes returned.
- * <b>WatchCount</b> is only returned with <b>DetailLevel ReturnAll</b> .
+ * <br> <B>Input property:</B> <code>IncludeWatchCount</code> - Specifies whether to include <b>WatchCount</b> in Item nodes returned. <b>WatchCount</b> is only returned with <b>DetailLevel ReturnAll</b>.
  * <br> <B>Input property:</B> <code>AdminEndedItemsOnly</code> - Specifies whether to return only items that were administratively ended
  * based on a policy violation.
- * <br> <B>Input property:</B> <code>CategoryID</code> - The category ID for the items retrieved.
- * If you specify <b>CategoryID</b> in a <b>GetSellerList</b> call,
- * the response contains only items in the category you specify.
- * <br> <B>Input property:</B> <code>IncludeVariations</code> - If true, the <b>Variations</b> node is returned for all multi-variation
- * listings in the response.<br>
- * <br>
- * <b>Note:</b> If the seller includes a large number of
- * variations in many listings, using this flag may degrade the
- * call's performance. Therefore, when you use this flag, you
- * may need to reduce the total number of items you're requesting
- * at once.
- * <br/><br/>
- * For example, you may need to use shorter time ranges in the
- * <b>EndTime</b> or <b>StartTime</b> filters, fewer entries per page in
- * <b>Pagination</b>, and/or <b>SKUArray</b>.
+ * <br> <B>Input property:</B> <code>CategoryID</code> - The category ID for the items retrieved. If you specify <b>CategoryID</b> in a <b>GetSellerList</b> call, the response contains only items in the category you specify.
+ * <br> <B>Input property:</B> <code>IncludeVariations</code> - If true, the <b>Variations</b> node is returned for all multi-variation listings in the response.<br> <br> <b>Note:</b> If the seller includes a large number of variations in many listings, using this flag may degrade the call's performance. Therefore, when you use this flag, you may need to reduce the total number of items you're requesting at once. <br/><br/> For example, you may need to use shorter time ranges in the <b>EndTime</b> or <b>StartTime</b> filters, fewer entries per page in <b>Pagination</b>, and/or <b>SKUArray</b>.
  * <br> <B>Output property:</B> <code>PaginationResult</code> - Contains information regarding the pagination of data (if pagination is
  * used), including total number of pages and total number of entries.
- * <br> <B>Output property:</B> <code>HasMoreItems</code> - If true, there are more items yet to be retrieved. Additional
- * <b>GetSellerList</b> calls with higher page numbers or more items per page must
- * be made to retrieve these items. Not returned if no items match the
- * request.
- * <br> <B>Output property:</B> <code>ReturnedItems</code> - Contains the list of the seller's items, one <b>ItemType</b> object per item.
- * Returns empty if no items are available that match the request.
- * <br> <B>Output property:</B> <code>ReturnedItemsPerPage</code> - Indicates the number of items that are being returned per page of data
- * (i.e., per call). Will be the same as the value specified in the
- * <b>Pagination.EntriesPerPage</b> input. Only returned if items are returned.
- * <br> <B>Output property:</B> <code>ReturnedPageNumber</code> - Indicates which page of data was just returned. Will be the same as the
- * value specified in the <b>Pagination.PageNumber</b> input. (If the input is
- * higher than the total number of pages, the call fails with an error.)
- * Only returned if items are returned.
+ * <br> <B>Output property:</B> <code>HasMoreItems</code> - If true, there are more items yet to be retrieved. Additional <b>GetSellerList</b> calls with higher page numbers or more items per page must be made to retrieve these items. Not returned if no items match the request.
+ * <br> <B>Output property:</B> <code>ReturnedItems</code> - Contains the list of the seller's items, one <b>ItemType</b> object per item. Returns empty if no items are available that match the request.
+ * <br> <B>Output property:</B> <code>ReturnedItemsPerPage</code> - Indicates the number of items that are being returned per page of data (i.e., per call). Will be the same as the value specified in the <b>Pagination.EntriesPerPage</b> input. Only returned if items are returned.
+ * <br> <B>Output property:</B> <code>ReturnedPageNumber</code> - Indicates which page of data was just returned. Will be the same as the value specified in the <b>Pagination.PageNumber</b> input. (If the input is higher than the total number of pages, the call fails with an error.) Only returned if items are returned.
  * <br> <B>Output property:</B> <code>ReturnedItemCountActual</code> - Indicates the total number of items returned (i.e., the number of
  * ItemType objects in ItemArray).
- * <br> <B>Output property:</B> <code>Seller</code> - Indicates the seller whose items are returned. The seller is the eBay
- * member whose <b>UserID</b> was passed in the request. If <b>UserID</b> was not
- * specified, the seller is the user who made the request (identified by
- * eBayAuthToken).
+ * <br> <B>Output property:</B> <code>Seller</code> - Indicates the seller whose items are returned. The seller is the eBay member whose <b>UserID</b> was passed in the request. If <b>UserID</b> was not specified, the seller is the user who made the request (identified by eBayAuthToken).
  * 
  * @author Ron Murphy
  * @version 1.0

@@ -25,6 +25,10 @@ is under the root directory at /LICENSE.txt.
     </description>
     <url>https://github.com/tonicsoft/ebaysdkcore</url>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <licenses>
         <license>
             <name>Common Development and Distribution License (CDDL) Version 1.0</name>
@@ -113,9 +117,9 @@ is under the root directory at /LICENSE.txt.
                     <xnocompile>true</xnocompile>
                     <sourceDestDir>src/main/java</sourceDestDir>
                     <wsdlDirectory>src/main/resources</wsdlDirectory>
-                    <wsdlLocation>com/ebay/sdk/eBaySvc.wsdl</wsdlLocation>
+                    <wsdlLocation>com/ebay/sdk/ebaySvc.wsdl</wsdlLocation>
                     <wsdlFiles>
-                        <wsdlFile>com/ebay/sdk/eBaySvc.wsdl</wsdlFile>
+                        <wsdlFile>com/ebay/sdk/ebaySvc.wsdl</wsdlFile>
                     </wsdlFiles>
                     <quiet>true</quiet>
                     <packageName>com.ebay.soap.eBLBaseComponents</packageName>
@@ -167,6 +171,17 @@ is under the root directory at /LICENSE.txt.
     </build>
 
     <dependencies>
+		<!--dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.8</version>
+		</dependency-->
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -204,8 +219,4 @@ is under the root directory at /LICENSE.txt.
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
     </distributionManagement>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 </project>
