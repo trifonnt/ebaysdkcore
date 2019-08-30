@@ -57,7 +57,7 @@ class SdkAPIInterfaceServiceLocator {
 			//by default, wsdl is in the root package
 			//@Trifon
 //			URL	url = EBayAPIInterfaceService.class.getClassLoader().getResource(EBAY_WSDL);
-			URL	url = SdkAPIInterfaceServiceLocator.class.getClassLoader().getResource(EBAY_WSDL);
+			URL	url = SdkAPIInterfaceServiceLocator.class.getResource(EBAY_WSDL);
 			if (url == null) {
 				throw new SdkException("fail to load ebay wsdl, please ensure that " + EBAY_WSDL + " is in the classpath!");
 			}
