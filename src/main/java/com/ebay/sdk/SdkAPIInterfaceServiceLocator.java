@@ -52,26 +52,28 @@ class SdkAPIInterfaceServiceLocator {
 	  private static final Logger log = LoggerFactory.getLogger(SdkAPIInterfaceServiceLocator.class);
 	  
 	  // initialize eBay service
-	  static {
-		  try{
-			    //by default, wsdl is in the root package
-			    URL	url = EBayAPIInterfaceService.class.getClassLoader().getResource(EBAY_WSDL);
-			    if (url == null) {
-			    	throw new SdkException("fail to load ebay wsdl, please ensure that " + EBAY_WSDL + " is in the classpath!");
-			    }
-			
-				QName qn = new QName(EBayConstants.EBLNS, EBAY_SERVICE_NAME);
-				//get eBay service
-				log.info("loading wsdl : " + url.toString());
-				service = new EBayAPIInterfaceService(url, qn);
-				log.info("wsdl loaded and service initialized.");
-				//set handler
-				HandlerResolver ccResolver = new EBayServiceHandlerResolver();
-				service.setHandlerResolver(ccResolver);	
-		  } catch (Exception e) {
-		      e.printStackTrace();
-		  }		  
-	  }
+	static {
+		try{
+			//by default, wsdl is in the root package
+			//@Trifon
+//			URL	url = EBayAPIInterfaceService.class.getClassLoader().getResource(EBAY_WSDL);
+			URL	url = SdkAPIInterfaceServiceLocator.class.getClassLoader().getResource(EBAY_WSDL);
+			if (url == null) {
+				throw new SdkException("fail to load ebay wsdl, please ensure that " + EBAY_WSDL + " is in the classpath!");
+			}
+
+			QName qn = new QName(EBayConstants.EBLNS, EBAY_SERVICE_NAME);
+			//get eBay service
+			log.info("loading wsdl : " + url.toString());
+			service = new EBayAPIInterfaceService(url, qn);
+			log.info("wsdl loaded and service initialized.");
+			//set handler
+			HandlerResolver ccResolver = new EBayServiceHandlerResolver();
+			service.setHandlerResolver(ccResolver);	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	  /**
 	   * get eBay API instance from the pool

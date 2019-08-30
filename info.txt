@@ -66,7 +66,7 @@ for details, please refer to pom.xml file.
  - Open below URL in order to start JitPack build process
 
 ```shell
-https://jitpack.io/com/github/trifonnt/ebaysdkcore/1113.0.1
+https://jitpack.io/com/github/trifonnt/ebaysdkcore/1113.0.2
 ```
 
 ### Get this project into your Maven build(pom.xml)
@@ -83,6 +83,6 @@ https://jitpack.io/com/github/trifonnt/ebaysdkcore/1113.0.1
  	<dependency>
 	    <groupId>com.github.trifonnt</groupId>
 	    <artifactId>ebaysdkcore</artifactId>
-	    <version>1113.0.1</version>
+	    <version>1113.0.2</version>
 	</dependency>
 ...
