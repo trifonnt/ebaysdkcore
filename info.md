@@ -1,4 +1,4 @@
-= Info
+# Info
    - https://mvnrepository.com/artifact/com.ebay/ebaysdkcore/939
 
  - https://github.com/tonicsoft/ebaysdkcore
@@ -11,7 +11,7 @@
  - https://github.com/lespaul361/eBaySDK1027
 
 
-= Steps when new version of eBay SDK is released
+# Steps when new version of eBay SDK is released
 +01) Get last version
 ```shell
 $ cd ebay-origin
