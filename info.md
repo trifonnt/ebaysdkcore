@@ -13,15 +13,18 @@
 
 = Steps when new version of eBay SDK is released
 +01) Get last version
+```shell
 $ cd ebay-origin
 $ wget https://developer.ebay.com/devzone/codebase/javasdk-jaxb/ebaysdkjava1131.zip -- TODO
 $ unzip ./ebaysdkjava1131.zip --TODO
 
 -$ wget https://developer.ebay.com/devzone/codebase/javasdk-jaxb/ebaysdkjava1113.zip
 -$ unzip ./ebaysdkjava1113.zip
+```
 
 
 +02) Copy source files
+```shell
 $ cd 01_jhipster/ebaysdkcore
 $ rm -rf ./src/main/java
 $ mkdir -p ./src/main/java
@@ -38,14 +41,18 @@ $ cp -r ./source/helper/src/com ../src/main/java
 $ cp ./source/wsdl/ebaySvc.wsdl ../src/main/resources/com/ebay/sdk/
 -$ cp ./build/custom-binding.xml ../
 -$ cp ./build/jaxb-binding.xjb ../
+```
 
 
 +03) Ensure Maven has enough memory to run the SDK build
+```shell
 $ set MAVEN_OPTS=-Xmx512m
-
+```
 
 +04) Execute Maven command
+```shell
 $ ./mvnw -e clean package
+```
 If the build is successful, the jar file will be built to 'target' folder.
 
 
@@ -74,18 +81,19 @@ https://jitpack.io/com/github/trifonnt/ebaysdkcore/1113.0.3
 
 ### Get this project into your Maven build(pom.xml)
 ```xml
-...
+	...
 	<repositories>
 		<repository>
 		    <id>jitpack.io</id>
 		    <url>https://jitpack.io</url>
 		</repository>
 	</repositories>
- ...
- ...
+ 	...
+ 	...
  	<dependency>
 	    <groupId>com.github.trifonnt</groupId>
 	    <artifactId>ebaysdkcore</artifactId>
 	    <version>1113.0.3</version>
 	</dependency>
-...
+	...
+```
