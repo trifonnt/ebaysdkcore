@@ -14,8 +14,11 @@
 = Steps when new version of eBay SDK is released
 +01) Get last version
 $ cd ebay-origin
-$ wget https://developer.ebay.com/devzone/codebase/javasdk-jaxb/ebaysdkjava1113.zip
-$ unzip ./ebaysdkjava1113.zip
+$ wget https://developer.ebay.com/devzone/codebase/javasdk-jaxb/ebaysdkjava1131.zip -- TODO
+$ unzip ./ebaysdkjava1131.zip --TODO
+
+-$ wget https://developer.ebay.com/devzone/codebase/javasdk-jaxb/ebaysdkjava1113.zip
+-$ unzip ./ebaysdkjava1113.zip
 
 
 +02) Copy source files
